@@ -1,0 +1,66 @@
+﻿@model Quiz.Models.ViewModels.IndexViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #welcomeBoxContainer {
+            width: 80%;
+            height: 190px;
+            margin: 0 auto;
+        }
+
+        #welcomeBox {
+            background-image: url('/pic/frame.jpg');
+            background-size: 100% 100%;
+            width: 100%;
+            height: 190px;
+            margin: 0 auto;
+            float: left;
+        }
+
+        #welcomeText {
+            line-height: 190px;
+        }
+
+        #information {
+            position: absolute;
+            top: 400px;
+            left: 600px;
+            right: 200px;
+            float: right;
+        }
+
+        [name=square] {
+            background-image: url('/pic/framestats.jpg');
+            background-size: cover;
+            width: 400px;
+            height: 250px;
+            margin: 40px;
+            display: inline-block;
+        }
+
+        #statistics {
+            line-height: 250px;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+    <div id="welcomeBoxContainer">
+        <div id="welcomeBox" class="text-center">
+            <a id="welcomeText" name="text" class="display-4" >Welcome to Quizlet!</a>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <div name="square">
+            <b id="statistics" name="text">Number of Quizes: @Model.Quizes</b>
+        </div>
+        <div name="square">
+            <b id="statistics" name="text">Number of Users: @Model.Users</b>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+﻿@model Quiz.Models.ViewModels.SubmitAnswersViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <h1 name="text" style="padding: 20px;">Your answers to quiz @Model.QuizTitle where successfully submitted!</h1>
+
+    <h2 name="text" style="padding: 10px; padding-left: 40px;">Points : @Model.Points / @Model.MaxPoints</h2>
+
+    <div style="padding: 40px;">
+        <button name="button" onclick="location.href = '@Url.Action("Result", "Quiz", new { quizId = ViewData["quizId"] })'">Results</button>
+        <button name="button" onclick="location.href = '@Url.Action("All", "Quiz")'">All quizes</button>
+    </div>
+
+</body>
+</html>

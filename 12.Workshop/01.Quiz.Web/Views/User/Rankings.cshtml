@@ -1,0 +1,79 @@
+﻿@model Quiz.Models.ViewModels.AllRankingsViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #quizesTable {
+            width: 100%;
+            border: 4px solid black;
+            border-radius: 25px;
+            border-collapse: collapse;
+            padding: 40px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 0.5em 1em;
+        }
+
+        .playQuizColumn {
+            text-align: center;
+        }
+
+        #@Model.Filter-column {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <h1 name="text" style="padding: 20px;">Rankings</h1>
+
+    <h3 name="text">Select a filter:</h3>
+
+    <form class="form-group" method="post">
+        <button type="submit" name="button" value="correctAnswers">Correct answers</button>
+        <button type="submit" name="button" value="incorrectAnswers">Incorrect answers</button>
+        <button type="submit" name="button" value="completedQuizes">Completed quizes</button>
+        <button type="submit" name="button" value="incompletedQuizes">Incompleted quizes</button>
+        <button type="submit" name="button" value="successRate">Success rate</button>
+        <button type="submit" name="button" value="perfectScores">Perfect scores</button>
+        <button type="submit" name="button" value="">None</button>
+    </form>
+
+    <table id="quizesTable">
+        <thead>
+            <tr>
+                <th name="text">Users</th>
+                <th name="text">Correct answers</th>
+                <th name="text">Incorrect answers</th>
+                <th name="text">Completed quizes</th>
+                <th name="text">Incompleted quizes</th>
+                <th name="text">Success rate</th>
+                <th name="text">Perfect scores</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Rankings)
+            {
+                <tr>
+                    @if (Model.CurrentUserId == user.Id)
+                    {
+                        <td id="username-column" name="text" style="background-color:lightcoral">@user.Username</td>
+                    }
+                    else
+                    {
+                        <td id="username-column" name="text">@user.Username</td>
+                    }
+                    <td id="correctAnswers-column" name="text">@user.Statistics.CorrectAnswers</td>
+                    <td id="incorrectAnswers-column" name="text">@user.Statistics.IncorrectAnswers</td>
+                    <td id="completedQuizes-column" name="text">@user.Statistics.CompletedQuizes</td>
+                    <td id="incompletedQuizes-column" name="text">@user.Statistics.IncompletedQuizes</td>
+                    <td id="successRate-column" name="text">@user.Statistics.SuccessRate %</td>
+                    <td id="perfectScores-column" name="text">@user.Statistics.PerfectScores</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

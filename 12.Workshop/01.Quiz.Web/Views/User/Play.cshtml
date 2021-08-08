@@ -1,0 +1,28 @@
+﻿@model Quiz.Models.ViewModels.QuizViewModel
+@{ int counterQuestions = 0; }
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h1 name="text" style="padding: 20px;">Quiz - @Model.Title</h1>
+
+    <form class="form-group" method="post">
+        @foreach (var question in Model.Questions)
+        {
+            <h3 name="text" style="padding: 20px;">@(counterQuestions + 1). @question.Title</h3>
+            <input type="hidden" name="questions" value="@question.Id">
+            @foreach (var answer in question.Answers)
+            {
+                <div style="padding-left: 40px;">
+                    <input type="radio" id="@answer.Id" name="Answers[@counterQuestions]" value="@answer.Id">
+                    <label for="@answer.Id" name="text">@answer.Title</label>
+                </div>
+            }
+            counterQuestions++;
+        }
+        <button type="submit" name="button">Submit</button>
+    </form>
+</body>
+</html>

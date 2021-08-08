@@ -1,0 +1,135 @@
+﻿@model Quiz.Models.ViewModels.UserStatisticsViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawAnswersChart);
+        google.charts.setOnLoadCallback(drawQuizesChart);
+
+        function drawAnswersChart() {
+            var data = google.visualization.arrayToDataTable([
+                ["Answer type", "Count", { role: "style" }],
+                ["Correct answers", @Model.CorrectAnswers, 'blue'],
+                ["Incorrect answers", @Model.IncorrectAnswers, 'red']
+            ]);
+            var options = {
+                title: { position: "none" },
+                legend: { position: "none" }
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById("chartAnswersContainer"));
+            chart.draw(data, options);
+
+            const node = document.createElement('div');
+            node.className = 'googleChartTitle';
+            node.innerHTML = 'Correct and incorrect answers';
+            chartAnswersContainer.childNodes[0].childNodes[0].append(node);
+        }
+
+        function drawQuizesChart() {
+            var data = google.visualization.arrayToDataTable([
+                ["Quiz type", "Count", { role: "style" }],
+                ["Completed quizes", @Model.CompletedQuizes, 'blue'],
+                ["Incompleted quizes", @Model.IncompletedQuizes, 'red']
+            ]);
+            var options = {
+                title: { position: "none" },
+                legend: { position: "none" }
+            };
+            var chart = new google.visualization.PieChart(document.getElementById("chartQuizesContainer"));
+            chart.draw(data, options);
+
+            const node = document.createElement('div');
+            node.className = 'googleChartTitle';
+            node.innerHTML = 'Completed and incompleted quizes';
+            chartQuizesContainer.childNodes[0].childNodes[0].append(node);
+        }
+    </script>
+
+    <style>
+        .googleChartTitle {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Comic Sans MS';
+            text-align: center;
+            position: absolute;
+            padding-top: 8px;
+            width: 100%;
+        }
+
+        [name=chart] {
+            height: 300px;
+            width: 500px;
+            display: inline-block;
+        }
+
+        [name=statContainer] {
+            height: 150px;
+            border-radius: 15px;
+            margin: 20px;
+            background-color: darkseagreen;
+            display: inline-block;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        [name=descriptionContainer] {
+            position: absolute;
+            left: 35px;
+            font-size: 30px;
+            display: block;
+            font-family: 'Comic Sans MS';
+        }
+
+        [name=valueContainer] {
+            background-color: white;
+            height: 100px;
+            width: 100px;
+            border-radius: 15px;
+            position: absolute;
+            right: 25px;
+            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        [name=value] {
+            font-size: 30px;
+            font-family: 'Comic Sans MS';
+        }
+    </style>
+</head>
+<body>
+    <h1 name="text" style="padding: 20px;">@User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@")) stats:</h1>
+
+    <div class="text-center">
+        <div id="chartAnswersContainer" name="chart"></div>
+        <div id="chartQuizesContainer" name="chart"></div>
+    </div>
+
+    <div>
+        <div name="statContainer">
+            <div name="descriptionContainer">
+                <a>Success rate from all answered questions:</a>
+            </div>
+            <div name="valueContainer">
+                <a name="value">@Model.SuccessRate %</a>
+            </div>
+        </div>
+
+        <div name="statContainer">
+            <div name="descriptionContainer">
+                <a>Perfect scores from all played quizes:</a>
+            </div>
+            <div name="valueContainer">
+                <a name="value">@Model.PerfectScores</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

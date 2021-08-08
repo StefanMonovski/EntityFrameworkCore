@@ -1,0 +1,56 @@
+﻿@model Quiz.Models.ViewModels.ResultQuizViewModel
+@{ int counterQuestions = 0; }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        [name=answer] {
+            padding-left: 40px;
+            padding-right: 100px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 15px;
+            font-size: large;    
+            font-family: 'Comic Sans MS';
+        }
+
+        #correctAnswer {
+            background-color: lightgreen;
+        }
+
+        #wrongAnswer {
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <h1 name="text" style="padding: 20px;">Quiz results - @Model.Title : @Model.Points / @Model.MaxPoints</h1>
+
+    @foreach (var question in Model.ResultQuestions)
+    {
+        <h3 name="text" style="padding: 20px;">@(counterQuestions + 1). @question.Title</h3>
+        foreach (var answer in question.ResultAnswers)
+        {
+            if (answer.IsCorrect)
+            {
+                <div>
+                    <label id="correctAnswer" name="answer">@answer.Title</label>
+                </div>
+            }
+            else if (answer.Id == question.UserAnswerId && !answer.IsCorrect)
+            {
+                <div>
+                    <label id="wrongAnswer" name="answer">@answer.Title</label>
+                </div>                
+            }
+            else
+            {
+                <div>
+                    <label name="answer">@answer.Title</label>
+                </div>                
+            }
+        }
+    }
+</body>
+</html>
