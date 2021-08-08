@@ -1,0 +1,217 @@
+{
+  "JsonQuiz": {
+    "QuizTitle": "Entity framework core quiz",
+    "Questions": [
+      {
+        "QuestionTitle": "Which of the following is true?",
+        "Answers": [
+          {
+            "AnswerTitle": "All of the statements.",
+            "Points": 100
+          },
+          {
+            "AnswerTitle": "EF Core supports cross-platform.",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "EF Core is an open sourced framework.",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "EF Core is a light weight and extensible framework.",
+            "Points": 0
+          }
+        ]
+      },
+      {
+        "QuestionTitle": "EF Core can be run on ________.",
+        "Answers": [
+          {
+            "AnswerTitle": "All of the technologies.",
+            "Points": 100
+          },
+          {
+            "AnswerTitle": ".NET Framework",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": ".NET Core",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "UWP & Xamarin",
+            "Points": 0
+          }
+        ]
+      },
+      {
+        "QuestionTitle": "Suggested approach for new EF Core projects is ______",
+        "Answers": [
+          {
+            "AnswerTitle": "Code-First",
+            "Points": 100
+          },
+          {
+            "AnswerTitle": "Database-First",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "Model-First",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "User-First",
+            "Points": 0
+          }
+        ]
+      },
+      {
+        "QuestionTitle": "EF Core API will create which table for the following context? \n public class SchoolContext : DbContext { public DbSet<Student> StudentList { get; set; } }",
+        "Answers": [
+          {
+            "AnswerTitle": "StudentList",
+            "Points": 100
+          },
+          {
+            "AnswerTitle": "Student",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "Students",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "StudentLists",
+            "Points": 0
+          }
+        ]
+      },
+      {
+        "QuestionTitle": "Which of the following platform supports EF Core?",
+        "Answers": [
+          {
+            "AnswerTitle": "All platforms",
+            "Points": 100
+          },
+          {
+            "AnswerTitle": "Windows",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "Linux",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "Mac",
+            "Points": 0
+          }
+        ]
+      },
+      {
+        "QuestionTitle": "All the entities which were created or retrieved out of the scope of the current DbContext instance, will have the _____ entity state.",
+        "Answers": [
+          {
+            "AnswerTitle": "Detached",
+            "Points": 100
+          },
+          {
+            "AnswerTitle": "Unchanged",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "Added",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "Removed",
+            "Points": 0
+          }
+        ]
+      },
+      {
+        "QuestionTitle": "Which of the following statement is true? ",
+        "Answers": [
+          {
+            "AnswerTitle": "Fluent API configurations provide more options than Data Annotation attributes.",
+            "Points": 100
+          },
+          {
+            "AnswerTitle": "Data annotation attributes overrides Fluent API configurations.",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "EF Core does not support data annotation attributes.",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "EF Core does not support Fluent API.",
+            "Points": 0
+          }
+        ]
+      },
+      {
+        "QuestionTitle": "Which of the following class is used as Fluent API in EF Core?",
+        "Answers": [
+          {
+            "AnswerTitle": "ModelBuilder",
+            "Points": 100
+          },
+          {
+            "AnswerTitle": "DbContext",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "DbSet",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "DbContextOptions",
+            "Points": 0
+          }
+        ]
+      },
+      {
+        "QuestionTitle": "modelBuilder.Entity<Student>().HasOne(s => s.Grade).WithMany(g => g.Students).HasForeignKey(s => s.CurrentGradeId); \n The above code configures ________ relationship between Student and Grade entities.",
+        "Answers": [
+          {
+            "AnswerTitle": "One-to-Many",
+            "Points": 100
+          },
+          {
+            "AnswerTitle": "One-to-One",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "Many-to-Many",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "One-to-Zero",
+            "Points": 0
+          }
+        ]
+      },
+      {
+        "QuestionTitle": "An instance of __________ class represents a session with the underlying database.",
+        "Answers": [
+          {
+            "AnswerTitle": "DbContext",
+            "Points": 100
+          },
+          {
+            "AnswerTitle": "DbSet",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "ModelBuilder",
+            "Points": 0
+          },
+          {
+            "AnswerTitle": "DbSession",
+            "Points": 0
+          }
+        ]
+      }
+    ]
+  }
+}
